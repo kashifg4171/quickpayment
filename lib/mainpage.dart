@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class MainPage extends StatefulWidget {
@@ -32,7 +31,7 @@ class _MainPageState extends State<MainPage> {
                 ),
                 child: Padding(
                   padding:
-                  const EdgeInsets.only(left: 20, right: 20.0, top: 30),
+                      const EdgeInsets.only(left: 20, right: 20.0, top: 30),
                   child: Column(
                     children: [
                       Row(
@@ -150,22 +149,28 @@ class _MainPageState extends State<MainPage> {
                       SizedBox(
                         height: 5,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          buildActivityButton(Icons.card_membership, "My Card",
-                              Colors.blue.withOpacity(0.2), Color(0XFF01579B)),
-                          buildActivityButton(
-                              Icons.transfer_within_a_station,
-                              "Transfer",
-                              Colors.cyanAccent.withOpacity(0.2),
-                              Color(0XFF0097A7)),
-                          buildActivityButton(
-                              Icons.pie_chart,
-                              "Statistics",
-                              Color(0XFFD7CCC8).withOpacity(0.4),
-                              Color(0XFF9499B7)),
-                        ],
+                      Container(
+                        height: 100,
+                        child: ListView(
+                          scrollDirection: Axis.horizontal,
+                          children: [
+                            buildActivityButton(
+                                Icons.card_membership,
+                                "My Card",
+                                Colors.blue.withOpacity(0.2),
+                                Color(0XFF01579B)),
+                            buildActivityButton(
+                                Icons.transfer_within_a_station,
+                                "Transfer",
+                                Colors.cyanAccent.withOpacity(0.2),
+                                Color(0XFF0097A7)),
+                            buildActivityButton(
+                                Icons.pie_chart,
+                                "Statistics",
+                                Color(0XFFD7CCC8).withOpacity(0.4),
+                                Color(0XFF9499B7)),
+                          ],
+                        ),
                       ),
                       SizedBox(
                         height: 15,
@@ -338,12 +343,12 @@ class _MainPageState extends State<MainPage> {
         height: 60,
         decoration: index == _selectedItemIndex
             ? BoxDecoration(
-            border:
-            Border(bottom: BorderSide(width: 4, color: Colors.green)),
-            gradient: LinearGradient(colors: [
-              Colors.green.withOpacity(0.3),
-              Colors.green.withOpacity(0.016),
-            ], begin: Alignment.bottomCenter, end: Alignment.topCenter))
+                border:
+                    Border(bottom: BorderSide(width: 4, color: Colors.green)),
+                gradient: LinearGradient(colors: [
+                  Colors.green.withOpacity(0.3),
+                  Colors.green.withOpacity(0.016),
+                ], begin: Alignment.bottomCenter, end: Alignment.topCenter))
             : BoxDecoration(),
         child: Icon(
           icon,
@@ -457,7 +462,7 @@ class _MainPageState extends State<MainPage> {
             Text(
               title,
               style:
-              TextStyle(color: Colors.black54, fontWeight: FontWeight.bold),
+                  TextStyle(color: Colors.black54, fontWeight: FontWeight.bold),
             )
           ],
         ),
