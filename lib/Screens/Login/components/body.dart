@@ -42,7 +42,7 @@ class _BodyState extends State<Body> {
     print(response.body);
     var data = json.decode(response.body.toString());
     sharedPref.setString('token', data['token']);    
-    sharedPref.setString("username",   "controllerUsername.text");
+    sharedPref.setString("username",   "${controllerUsername.text}");
     token=data['token'];
     if (response.statusCode == 200) {
       Fluttertoast.showToast(
