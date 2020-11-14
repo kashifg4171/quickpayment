@@ -11,6 +11,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:mandate_storeapp/utils.dart';
+import 'dart:developer' as logger;
 
 class Body extends StatefulWidget {
   const Body({
@@ -25,7 +26,7 @@ class _BodyState extends State<Body> {
   TextEditingController controllerUsername = new TextEditingController();
   TextEditingController controllerPassword = new TextEditingController();
   final SharedPref sharedPref = SharedPref();
-
+  String token;
   Future login() async {
     final url = Uri.http("www.mandatestore.ng", '/api/login/');
     var response = await http.post(
@@ -40,7 +41,9 @@ class _BodyState extends State<Body> {
     );
     print(response.body);
     var data = json.decode(response.body.toString());
-    sharedPref.setString('token', data['token']);
+    sharedPref.setString('token', data['token']);    
+    sharedPref.setString("username",   "controllerUsername.text");
+    token=data['token'];
     if (response.statusCode == 200) {
       Fluttertoast.showToast(
           msg: "Login Successful",
@@ -51,7 +54,7 @@ class _BodyState extends State<Body> {
           textColor: Colors.white,
           fontSize: 16.0);
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => MainPage()));
+          context, MaterialPageRoute(builder: (context) => MainPage(username: controllerUsername.text, userToken: token, )));
     } else {
       Fluttertoast.showToast(
           msg: "Invalid Username or Password",
@@ -67,6 +70,7 @@ class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    
     return Background(
       child: SingleChildScrollView(
         child: Column(

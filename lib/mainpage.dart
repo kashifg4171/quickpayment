@@ -1,12 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:mandate_storeapp/utils.dart';
 
 class MainPage extends StatefulWidget {
+  String username;
+  String userToken;
+  MainPage({this.userToken, this.username});
   @override
   _MainPageState createState() => _MainPageState();
 }
 
 class _MainPageState extends State<MainPage> {
+  String username='';
+  String userToken='';
   int _selectedItemIndex = 2;
+  
+  @override
+  void initState() {
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,8 +37,8 @@ class _MainPageState extends State<MainPage> {
               Container(
                 height: 300,
                 decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      colors: [Color(0XFF00B686), Color(0XFF00838F)]),
+                  // gradient: LinearGradient(
+                  //     colors: [Color(0XFF00B686), Color(0XFF00838F)]),
                 ),
                 child: Padding(
                   padding:
@@ -90,11 +101,22 @@ class _MainPageState extends State<MainPage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "Adeshile OLuwaseyi",
+                                "${widget.username}",
                                 style: TextStyle(
                                     fontSize: 20,
                                     fontWeight: FontWeight.w600,
-                                    color: Colors.white),
+                                    color: Colors.black),
+                              ),
+                              Container(
+                                width: MediaQuery.of(context).size.width * 0.6,
+                                child: Text(
+                                  "${widget.userToken}",
+                                  maxLines: 1,
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.black),
+                                ),
                               ),
                               SizedBox(
                                 height: 10,
@@ -345,10 +367,11 @@ class _MainPageState extends State<MainPage> {
             ? BoxDecoration(
                 border:
                     Border(bottom: BorderSide(width: 4, color: Colors.green)),
-                gradient: LinearGradient(colors: [
-                  Colors.green.withOpacity(0.3),
-                  Colors.green.withOpacity(0.016),
-                ], begin: Alignment.bottomCenter, end: Alignment.topCenter))
+                // gradient: LinearGradient(colors: [
+                //   Colors.green.withOpacity(0.3),
+                //   Colors.green.withOpacity(0.016),
+                // ], begin: Alignment.bottomCenter, end: Alignment.topCenter)
+                )
             : BoxDecoration(),
         child: Icon(
           icon,
